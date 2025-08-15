@@ -11,7 +11,7 @@ class BasePage:
     
     def click(self, locator):
         self.find(*locator).click()
-        self.driver.find_element(*locator).click()
+        #self.driver.find_element(*locator).click()
 
     def set(self, locator, value):
         self.find(*locator).clear()
@@ -24,5 +24,10 @@ class BasePage:
         return self.driver.title
     
     def click_right_menu_page(self, page_name):
+        #self.click(self.page(page_name))
         page = By.XPATH, "//aside[@id='column-right']//a[text()=' "+ page_name +"']"
         self.click(page)
+
+    #This method allows us to click page, check if page is visible 
+    def page(self, page_name):
+        return By.XPATH, "//aside[@id='column-right']//a[text()=' "+ page_name +"']"
